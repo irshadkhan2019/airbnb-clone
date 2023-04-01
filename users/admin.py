@@ -4,4 +4,6 @@ from . import models
 # Register your models here.
 @admin.register(models.User)
 class CustomUserAdmin(admin.ModelAdmin):
-    pass
+    list_display=("username","gender","language","superhost")
+    list_filter=("language","gender","superhost")
+    
