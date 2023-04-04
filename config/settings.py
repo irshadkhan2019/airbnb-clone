@@ -135,3 +135,6 @@ STATIC_URL = "/static/"
 
 # Override default user model
 AUTH_USER_MODEL = "users.User"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
+MEDIA_URL = "/media/"
