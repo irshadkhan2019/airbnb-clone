@@ -124,6 +124,10 @@ class RoomAdmin(admin.ModelAdmin):
         "house_all_rules",
     )
 
+    # Intercept dave from admin panel
+    def save_model(self, request, obj, form, change):
+        return super().save_model(request, obj, form, change)
+
     def count_amenities(self, obj):
         return obj.amenities.count()
 

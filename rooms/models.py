@@ -46,7 +46,7 @@ class Photo(core_models.TimeStampedModel):
 
     def __str__(self):
         return self.caption
-
+    
 
 class Room(core_models.TimeStampedModel):
     """Room Model"""
@@ -78,6 +78,11 @@ class Room(core_models.TimeStampedModel):
 
     def __str__(self):
         return self.name
+    
+    # Intercept save() from everywhere
+    def save(self,*args,**kwargs):
+        self.city=str.capitalize(self.city)
+        super().save(*args,**kwargs)
 
     def total_rating(self):
         all_reviews = self.reviews.all()
