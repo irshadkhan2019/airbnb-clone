@@ -26,8 +26,14 @@ class PhotoAdmin(admin.ModelAdmin):
     get_thumbnail.short_description = "Thumbnail"
 
 
+class PhotoInline(admin.TabularInline):
+    model=models.Photo
+
+
 @admin.register(models.Room)
 class RoomAdmin(admin.ModelAdmin):
+
+    inlines=(PhotoInline,)
 
     fieldsets = (
         (
@@ -109,6 +115,8 @@ class RoomAdmin(admin.ModelAdmin):
     search_fields = ("=city", "^host__username")
 
     ordering = ("name", "price")
+
+    raw_id_fields=("host",)
 
     filter_horizontal = (
         "amenities",
