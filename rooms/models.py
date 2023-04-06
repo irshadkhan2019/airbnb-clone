@@ -46,7 +46,7 @@ class Photo(core_models.TimeStampedModel):
 
     def __str__(self):
         return self.caption
-    
+
 
 class Room(core_models.TimeStampedModel):
     """Room Model"""
@@ -58,7 +58,7 @@ class Room(core_models.TimeStampedModel):
     price = models.IntegerField()
     address = models.CharField(max_length=150)
     beds = models.IntegerField()
-    bathrooms = models.IntegerField()
+    bedrooms = models.IntegerField()
     baths = models.IntegerField()
     guests = models.IntegerField()
     check_in = models.TimeField()
@@ -78,15 +78,16 @@ class Room(core_models.TimeStampedModel):
 
     def __str__(self):
         return self.name
-    
+
     # Intercept save() from everywhere
-    def save(self,*args,**kwargs):
-        self.city=str.capitalize(self.city)
-        super().save(*args,**kwargs)
+    def save(self, *args, **kwargs):
+        self.city = str.capitalize(self.city)
+        super().save(*args, **kwargs)
 
     def total_rating(self):
         all_reviews = self.reviews.all()
         all_rating = 0
-        for review in all_reviews:
-            all_rating += review.rating_average()
-        return all_rating / len(all_reviews)
+        if len(all_reviews) > 0:
+            for review in all_reviews:
+                all_rating += review.rating_average()
+            return all_rating / len(all_reviews)

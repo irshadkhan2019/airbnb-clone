@@ -27,13 +27,13 @@ class PhotoAdmin(admin.ModelAdmin):
 
 
 class PhotoInline(admin.TabularInline):
-    model=models.Photo
+    model = models.Photo
 
 
 @admin.register(models.Room)
 class RoomAdmin(admin.ModelAdmin):
 
-    inlines=(PhotoInline,)
+    inlines = (PhotoInline,)
 
     fieldsets = (
         (
@@ -63,7 +63,7 @@ class RoomAdmin(admin.ModelAdmin):
             {
                 "fields": (
                     "beds",
-                    "bathrooms",
+                    "bedrooms",
                     "baths",
                     "guests",
                 )
@@ -82,7 +82,7 @@ class RoomAdmin(admin.ModelAdmin):
         ),
         (
             "Last Details",
-            {"fields": ("host",)},
+            {"fields": ("host", "room_type")},
         ),
     )
 
@@ -92,7 +92,7 @@ class RoomAdmin(admin.ModelAdmin):
         "city",
         "price",
         "beds",
-        "bathrooms",
+        "bedrooms",
         "baths",
         "guests",
         "check_in",
@@ -116,7 +116,7 @@ class RoomAdmin(admin.ModelAdmin):
 
     ordering = ("name", "price")
 
-    raw_id_fields=("host",)
+    raw_id_fields = ("host",)
 
     filter_horizontal = (
         "amenities",
