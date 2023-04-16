@@ -138,3 +138,11 @@ AUTH_USER_MODEL = "users.User"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
 MEDIA_URL = "/media/"
+
+# email config
+
+EMAIL_HOST = "sandbox.smtp.mailtrap.io"
+EMAIL_PORT = "465"
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+EMAIL_FROM = "no-reply@sandbox.smtp.mailtrap.io"
