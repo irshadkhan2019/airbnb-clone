@@ -1,0 +1,22 @@
+{
+  "name": "airbnb",
+  "version": "1.0.0",
+  "description": "Cloning Airbnb Via Python django tailwind ++++",
+  "main": "index.js",
+  "scripts": {
+    "compile": "npx tailwindcss -i assets/scss/styles.scss -o static/css/styles.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irshadkhan2019/airbnb-clone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/irshadkhan2019/airbnb-clone/issues"
+  },
+  "homepage": "https://github.com/irshadkhan2019/airbnb-clone#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.3.1"
+  }
+}
