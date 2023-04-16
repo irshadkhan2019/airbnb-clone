@@ -28,7 +28,18 @@ class User(AbstractUser):
     CURRENCY_USD = "usd"
     CURRENCY_INR = "inr"
 
-    CURRENCY_CHOICES = ((CURRENCY_USD, "USD"), (CURRENCY_INR, "INR"))
+    CURRENCY_CHOICES = (
+        (CURRENCY_USD, "USD"),
+        (CURRENCY_INR, "INR"),
+    )
+
+    LOGIN_EMAIL = "email"
+    LOGIN_GITHUB = "Github"
+
+    LOGIN_CHOICES = (
+        (LOGIN_EMAIL, "Email"),
+        (LOGIN_GITHUB, "Github"),
+    )
 
     bio = models.TextField(default="", blank=True)
     avatar = models.ImageField(blank=True, upload_to="avatars")
@@ -43,6 +54,9 @@ class User(AbstractUser):
     birthdate = models.DateField(blank=True, null=True)
     email_verified = models.BooleanField(default=False)
     email_secret = models.CharField(max_length=120, default="", blank=True)
+    login_method = models.CharField(
+        max_length=40, choices=LOGIN_CHOICES, default=LOGIN_EMAIL
+    )
 
     def verify_email(self):
         if self.email_verified is False:

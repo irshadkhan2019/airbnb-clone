@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from . import models
 
+
 # Register your models here.
 @admin.register(models.User)
 class CustomUserAdmin(UserAdmin):
@@ -19,6 +20,7 @@ class CustomUserAdmin(UserAdmin):
                     "currency",
                     "superhost",
                     "birthdate",
+                    "login_method",
                 )
             },
         ),
@@ -37,4 +39,5 @@ class CustomUserAdmin(UserAdmin):
         "superhost",
         "is_staff",
         "is_superuser",
+        "login_method",
     )
