@@ -79,11 +79,11 @@ class Room(core_models.TimeStampedModel):
 
     def __str__(self):
         return self.name
-    
+
     # visit actual room from admin
     def get_absolute_url(self):
         return reverse("rooms:detail", kwargs={"pk": self.pk})
-    
+
     # Intercept save() from everywhere
     def save(self, *args, **kwargs):
         self.city = str.capitalize(self.city)
@@ -96,3 +96,7 @@ class Room(core_models.TimeStampedModel):
             for review in all_reviews:
                 all_rating += review.rating_average()
             return round(all_rating / len(all_reviews), 2)
+
+    def first_photo(self):
+        (photo,) = self.photos.all()[:1]
+        return photo.file.url
