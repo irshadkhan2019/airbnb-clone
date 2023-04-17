@@ -4,7 +4,7 @@
   "description": "Cloning Airbnb Via Python django tailwind ++++",
   "main": "index.js",
   "scripts": {
-    "compile": "npx tailwindcss -i assets/scss/styles.scss -o static/css/styles.css --watch"
+    "compile": "npx tailwindcss -i ./assets/scss/styles.scss -o ./static/css/styles.css --watch"
   },
   "repository": {
     "type": "git",

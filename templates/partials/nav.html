@@ -1,9 +1,8 @@
-
-  <a href="{% url 'core:home' %}">Home</a>
-
+<ul class="flex items-center text-sm font-medium h-full ">
   {% if user.is_authenticated %}
-    <a href="{% url "users:logout" %}">Logout</a>
+  <li class="nav_link"><a href="{% url "users:logout" %}">Logout</a></li>
   {% else %}
-    <a href="{% url "users:login" %}">Login</a>
-    <a href="{% url "users:signup" %}">Signup</a>
+  <li class="nav_link"><a href="{% url "users:login" %}">Login</a></li>
+  <li class="nav_link"><a href="{% url "users:signup" %}">Signup</a></li>
   {% endif %}
+</ul>
