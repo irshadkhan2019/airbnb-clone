@@ -6,6 +6,7 @@ from django.views import View
 from django.urls import reverse_lazy
 from django.views.generic import FormView
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 from . import forms, models
 
 
@@ -26,6 +27,9 @@ class LoginView(FormView):
 
 
 def log_out(request):
+    messages.info(
+        request, f"See you later {request.user.first_name},Thanks for visiting!!"
+    )
     logout(request)
     return redirect(reverse("core:home"))
 
@@ -122,10 +126,12 @@ def github_callback(request):
                         user.set_unusable_password()
                         user.save()
                     login(request, user)
+                    messages.success(request, f"Welcome back {user.first_name}")
                     return redirect(reverse("core:home"))
                 else:
                     raise GithubException("Can't get your profile")
         else:
             raise GithubException("Can't get code")
     except GithubException as e:
+        messages.error(request, e)
         return redirect(reverse("users:login"))
