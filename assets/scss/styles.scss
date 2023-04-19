@@ -92,3 +92,7 @@ select {
 .btn-link {
   @apply text-center py-3 rounded-lg font-light text-lg w-full text-white bg-red-500;
 }
+
+.border-section {
+  @apply border-b border-gray-400 pb-8 mt-8;
+}
