@@ -9,14 +9,13 @@ from django.views.generic import FormView, DetailView, UpdateView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from . import forms, models
+from . import forms, models, mixins
 
 
-# Create your views here.
-class LoginView(FormView):
+# LoggedOutOnlyView displays loginview only if user not logged in.
+class LoginView(mixins.LoggedOutOnlyView, FormView):
     template_name = "users/login.html"
     form_class = forms.LoginForm
-    success_url = reverse_lazy("core:home")
 
     def form_valid(self, form):
         email = form.cleaned_data.get("email")
@@ -27,6 +26,13 @@ class LoginView(FormView):
             login(self.request, user)
             return super().form_valid(form)  # if valid returns to success_url
 
+    def get_success_url(self):
+        next_arg = self.request.GET.get("next")
+        if next_arg is not None:
+            return next_arg
+        else:
+            return reverse("core:home")
+
 
 def log_out(request):
     messages.info(
@@ -36,7 +42,7 @@ def log_out(request):
     return redirect(reverse("core:home"))
 
 
-class SignUpView(FormView):
+class SignUpView(mixins.LoggedOutOnlyView, FormView):
     template_name = "users/signup.html"
     form_class = forms.SignUpForm
     success_url = reverse_lazy("core:home")
@@ -144,7 +150,7 @@ class UserProfileView(DetailView):
     context_object_name = "user_obj"
 
 
-class UpdateUserView(SuccessMessageMixin, UpdateView):
+class UpdateUserView(mixins.LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = models.User
     template_name = "users/update-profile.html"
     fields = (
@@ -171,7 +177,12 @@ class UpdateUserView(SuccessMessageMixin, UpdateView):
         return form
 
 
-class UpdatePasswordView(SuccessMessageMixin, PasswordChangeView):
+class UpdatePasswordView(
+    mixins.EmailLoginOnlyView,
+    mixins.LoginRequiredMixin,
+    SuccessMessageMixin,
+    PasswordChangeView,
+):
     template_name = "users/update-password.html"
 
     def get_form(self, form_class=None):
