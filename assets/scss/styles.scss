@@ -23,13 +23,29 @@
 }
 
 
-input {
+input,
+textarea {
   @apply rounded-sm py-5 font-light mb-3 text-lg w-full text-left border border-gray-600 px-5;
 
   &:focus {
     @apply outline-none border-teal-500;
   }
 }
+
+
+textarea {
+
+  resize: none;
+  height: 100px;
+}
+
+
+select {
+  @apply rounded-sm border-gray-600 px-5 w-full border mb-3;
+  ;
+  height: 40px;
+}
+
 
 @keyframes messageFadeIn {
   0% {
@@ -71,4 +87,8 @@ input {
   &.warning {
     @apply bg-yellow-400;
   }
+}
+
+.btn-link {
+  @apply text-center py-3 rounded-lg font-light text-lg w-full text-white bg-red-500;
 }
