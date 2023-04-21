@@ -8,6 +8,11 @@
       Start hosting
     {% endif %}
   </a></li>
+  <li class="nav_link"><a href="{% url 'rooms:create' %}">
+    {% if request.session.is_hosting %}
+      Create room 
+    {% endif %}
+  </a></li>
   <li class="nav_link"><a href="{{user.get_absolute_url}}">Profile</a></li>
   <li class="nav_link"><a href="{% url "users:logout" %}">Logout</a></li>
   {% else %}
