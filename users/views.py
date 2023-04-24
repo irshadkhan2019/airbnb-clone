@@ -1,9 +1,11 @@
 import os
 import requests
 from django.shortcuts import render
+from django.http import HttpResponse
 from django.shortcuts import redirect, reverse
 from django.views import View
 from django.urls import reverse_lazy
+from django.utils import translation
 from django.contrib.auth.views import PasswordChangeView
 from django.views.generic import FormView, DetailView, UpdateView
 from django.contrib.auth import authenticate, login, logout
@@ -208,3 +210,12 @@ def switch_hosting(request):
     except KeyError:
         request.session["is_hosting"] = True
     return redirect(reverse("core:home"))
+
+
+def switch_language(request):
+    lang = request.GET.get("lang", None)
+    # print(lang)
+    if lang is not None:
+        request.session[translation.LANGUAGE_SESSION_KEY] = lang
+        # print(request.session[translation.LANGUAGE_SESSION_KEY])
+    return HttpResponse(200)

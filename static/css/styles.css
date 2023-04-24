@@ -760,6 +760,10 @@ video {
   height: 1px;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
 .w-1\/2 {
   width: 50%;
 }
