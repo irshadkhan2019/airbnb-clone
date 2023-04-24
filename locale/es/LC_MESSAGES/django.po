@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-24 15:31+0530\n"
+"POT-Creation-Date: 2023-04-24 15:50+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,3 +25,36 @@ msgstr "buscar por Cuidad"
 #: .\templates\partials\footer.html:5
 msgid "Airbnb Clone"
 msgstr "Clon de Airbnb"
+
+#: .\templates\rooms\room_list.html:28
+#, python-format
+msgid " page %(current_page)s of %(total_pages)s"
+msgstr " página %(current_page)s de %(total_pages)s"
+
+#: .\users\models.py:20
+msgid "Male"
+msgstr "Masculina"
+
+#: .\users\models.py:21
+msgid "Female"
+msgstr "Femenina"
+
+#: .\users\models.py:22
+msgid "Other"
+msgstr "Otra"
+
+#: .\users\models.py:42
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: .\users\models.py:43
+msgid "Github"
+msgstr "Github"
+
+#: .\users\models.py:49
+msgid "gender"
+msgstr "género"
+
+#: .\users\models.py:73
+msgid "Verify Airbnb Account"
+msgstr "Verificar cuenta de Airbnb"
