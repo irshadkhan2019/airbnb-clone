@@ -748,6 +748,10 @@ video {
   height: 75vh;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
 .h-auto {
   height: auto;
 }
@@ -758,10 +762,6 @@ video {
 
 .h-px {
   height: 1px;
-}
-
-.h-8 {
-  height: 2rem;
 }
 
 .w-1\/2 {
@@ -818,6 +818,10 @@ video {
 
 .w-px {
   width: 1px;
+}
+
+.w-2\/6 {
+  width: 33.333333%;
 }
 
 .max-w-full {

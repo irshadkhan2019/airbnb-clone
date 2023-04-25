@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-24 15:50+0530\n"
+"POT-Creation-Date: 2023-04-25 13:00+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,6 +25,14 @@ msgstr "buscar por Cuidad"
 #: .\templates\partials\footer.html:5
 msgid "Airbnb Clone"
 msgstr "Clon de Airbnb"
+
+#: .\templates\rooms\room_detail.html:36
+msgid "Remove from Favourites"
+msgstr "Quitar de favoritos"
+
+#: .\templates\rooms\room_detail.html:40
+msgid "Save to Favourites"
+msgstr "Guardar en favoritos"
 
 #: .\templates\rooms\room_list.html:28
 #, python-format
